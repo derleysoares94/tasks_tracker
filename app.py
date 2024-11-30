@@ -15,11 +15,16 @@ with app.app_context():
 def index():
     today_tasks = Task.query.filter(func.date(Task.due_date) == datetime.today().date()).all()
     today_tasks_done = Task.query.filter(Task.status == 3, func.date(Task.due_date) == datetime.today().date()).all()
-    
-    teste = {
+    if len(today_tasks) == 0 or len(today_tasks_done) == 0:
+        today_tasks_done_percentage = 0
+        
+    else:
+        today_tasks_done_percentage = '{0:.2f}'.format(len(today_tasks_done)/len(today_tasks)*100)
+        
+    tasks = {
         "today_tasks": len(today_tasks),
         "today_tasks_done": len(today_tasks_done),
-        "quantity_done": '{0:.2f}'.format(len(today_tasks_done)/len(today_tasks)*100)
+        "quantity_done": today_tasks_done_percentage
     }
     
     today = datetime.now().date()
@@ -31,12 +36,17 @@ def index():
     week_tasks = Task.query.filter(func.date(Task.due_date) >= start_of_week, func.date(Task.due_date) <= end_of_week).all()
     week_tasks_done = Task.query.filter(Task.status == 3, func.date(Task.due_date) >= start_of_week, func.date(Task.due_date) <= end_of_week).all()
     
+    if len(week_tasks) == 0 or len(week_tasks_done) == 0:
+        week_tasks_done_percentage = 0
+    else:
+        week_tasks_done_percentage = '{0:.2f}'.format(len(week_tasks_done)/len(week_tasks)*100)
+        
     week_tasks = {
         "week_tasks": len(week_tasks),
         "week_tasks_done": len(week_tasks_done),
-        "quantity_done": '{0:.2f}'.format(len(week_tasks_done)/len(week_tasks)*100)
+        "quantity_done": week_tasks_done_percentage
     }
-    return render_template('index.html', today_tasks=teste, week_tasks=week_tasks)
+    return render_template('index.html', today_tasks=tasks, week_tasks=week_tasks)
 
 @app.route('/tasks')
 def tasks():

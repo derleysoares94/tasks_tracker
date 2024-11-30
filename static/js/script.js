@@ -1,3 +1,7 @@
+/*
+Using SweetAlert library to show an confirm alert when the user tries to delete a task,
+asking: Are you sure?. You won't be able to revert this!.
+*/
 document.addEventListener('DOMContentLoaded', function () {
     const deleteForms = document.querySelectorAll('form.delete-form');
     deleteForms.forEach(form => {
