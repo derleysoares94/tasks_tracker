@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Create Tasks</h1>
+
+<form method="POST" action="{{ url_for('create_task') }}">
+    <div class="form-group create-task">
+        <label for="title">Task name:</label>
+        <input type="text" id="title" name="title" class="notebook-input" placeholder="Type the task name" required>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" class="notebook-textarea" placeholder="Type the task description" required></textarea>
+        <label for="status">Status:</label>
+        <select id="status" name="status" class="notebook-select" required>
+            <option value="" disabled selected>Select the status</option>
+            <option value="1">To Do</option>
+            <option value="2">Doing</option>
+            <option value="3">Done</option>
+        </select>
+        <label for="due_date">Due date:</label>
+        <input type="date" id="due_date" name="due_date" class="notebook-input" required>
+        <button type="submit">Create Task</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,65 @@
+.create-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 210mm;
+    height: 205mm   ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-task input,
+.create-task textarea,
+.create-task select {
+    margin-bottom: 15px;
+    width: 80%;
+    /* Adjust the width as needed */
+}
+
+.create-task button {
+    padding: 10px 20px;
+    background-color: #0000FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.notebook-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+}
+
+.notebook-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    height: 100px;
+}
+
+.notebook-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+}

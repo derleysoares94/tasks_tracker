@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Tasks</h1>
+
+<div class="tasks">
+    <div class="tasks_div">
+        <h4>Tasks of the day</h4>
+        <div class="task_inf">
+            <p>Total of tasks: {{ today_tasks.today_tasks }}</p>
+            <p>Total of tasks completed: {{ today_tasks.today_tasks_done }}</p>
+            <button type="button" class="btn btn-dark" onclick="window.location.href='{{ url_for( 'tasks' ) }}';">Check out tasks</button>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{ today_tasks.quantity_done }}%;" aria-valuenow="{{ today_tasks.quantity_done }}" aria-valuemin="0" aria-valuemax="100">{{ today_tasks.quantity_done }}%</div>
+        </div>
+    </div>
+
+    <div class="tasks_div">
+        <h4>Tasks of the week</h4>
+        <div class="task_inf">
+            <p>Total of tasks: {{ week_tasks.week_tasks }}</p>
+            <p>Total of tasks completed: {{ week_tasks.week_tasks_done }}</p>
+            <button type="button" class="btn btn-dark" onclick="window.location.href='{{ url_for( 'tasks' ) }}';">Check out tasks</button>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{ week_tasks.quantity_done }}%;" aria-valuenow="{{ week_tasks.quantity_done }}" aria-valuemin="0" aria-valuemax="100">{{ week_tasks.quantity_done}}%</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
