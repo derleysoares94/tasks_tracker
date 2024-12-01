@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from sqlalchemy import func
+from sqlalchemy.exc import SQLAlchemyError
 from flask import Flask, flash, render_template, redirect, request, url_for
+from forms import TaskForm
 
 from models import Task, db
 
@@ -58,23 +60,30 @@ def tasks():
 
 @app.route('/create_task', methods=['GET','POST'])
 def create_task():
+    form = TaskForm()
     if request.method == 'POST':
-        title = request.form['title']
-        description = request.form['description']
-        status = int(request.form['status'])
-        due_date = datetime.strptime(request.form['due_date'], '%Y-%m-%d')
-        
-        task = Task(
-            title=title,
-            description=description,
-            status=status,
-            due_date=due_date
-        )
-        db.session.add(task)
-        db.session.commit()
-        return redirect(url_for('index'))
+        if form.validate_on_submit():
+            try:
+                title = form.title.data
+                description = form.description.data
+                status = int(form.status.data)
+                due_date = form.due_date.data
+
+                task = Task(
+                    title=title,
+                    description=description,
+                    status=status,
+                    due_date=due_date
+                )
+                db.session.add(task)
+                db.session.commit()
+                flash('Task created successfully!', 'success')
+                return redirect(url_for('tasks'))
+            except SQLAlchemyError as e:
+                db.session.rollback()
+                flash('An error occurred while creating the task. Please try again.', 'danger')
     
-    return render_template('create_task.html')
+    return render_template('create_task.html', form=form)
 
 @app.route('/edit_task/<int:task_id>', methods=['POST'])
 def edit_task(task_id):

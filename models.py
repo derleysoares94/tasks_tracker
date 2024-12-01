@@ -11,7 +11,7 @@ class Task(db.Model):
     title = db.mapped_column(db.String(80), nullable=False)
     description = db.mapped_column(db.String(120), nullable=False)
     status = db.mapped_column(db.Integer, nullable=False)
-    due_date = db.mapped_column(db.DateTime, default=datetime.utcnow)
+    due_date = db.mapped_column(db.DateTime, default=datetime.utcnow, nullable=False)
     
     def __repr__(self):
         return f'<Task {self.title}>'

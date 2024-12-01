@@ -1,39 +1,8 @@
-.create-task {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    width: 210mm;
-    height: 205mm   ;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.create-task input,
-.create-task textarea,
-.create-task select {
-    margin-bottom: 15px;
-    width: 80%;
-    /* Adjust the width as needed */
-}
-
-.create-task button {
-    padding: 10px 20px;
-    background-color: #0000FF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.notebook-input {
+.notebook-input,
+.notebook-textarea,
+.notebook-select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     line-height: 20px;
@@ -42,24 +11,50 @@
 }
 
 .notebook-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    line-height: 20px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
     height: 100px;
 }
 
-.notebook-select {
-    width: 100%;
-    padding: 10px;
+.form-group {
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    line-height: 20px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
 }
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    float: left;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Small devices such as large phones (640px and up) */
+@media only screen and (min-width: 640px) {}
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (min-width: 1024px) {
+    .form-container {
+        width: 600px;
+    }
+}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 1280px) {}
