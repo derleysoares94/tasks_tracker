@@ -9,3 +9,4 @@ SQLAlchemy~=2.0.16
 watchdog~=3.0
 Werkzeug~=2.2
 Flask-WTF~=1.2.2
+python-dotenv~=1.0.1
