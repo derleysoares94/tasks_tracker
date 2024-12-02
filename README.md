@@ -1,4 +1,4 @@
-# Tasks Tracker U+23F0
+# Tasks Tracker ⏰
 
 **Tasks Tracker** is a simple and intuitive web application that helps you track your daily tasks!
 
