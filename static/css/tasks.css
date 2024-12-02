@@ -16,6 +16,27 @@
     background-color: #007bff;
 }
 
+@media (max-width: 767px) {
+    .task-div {
+        padding: 0 15px;
+    }
+
+    .tasks_table th,
+    .tasks_table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .actions-btn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .actions-btn .btn {
+        margin-bottom: 5px;
+    }
+}
+
 /* Small devices such as large phones (640px and up) */
 @media only screen and (min-width: 640px) {}
 
