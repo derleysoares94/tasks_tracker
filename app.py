@@ -4,7 +4,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from flask import Flask, flash, render_template, redirect, request, url_for
 from forms import TaskForm
 
-from models import Task, db
+from models import Tasks, db
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -15,8 +15,8 @@ with app.app_context():
     
 @app.route('/',  methods=['GET'])
 def index():
-    today_tasks = Task.query.filter(func.date(Task.due_date) == datetime.today().date()).all()
-    today_tasks_done = Task.query.filter(Task.status == 3, func.date(Task.due_date) == datetime.today().date()).all()
+    today_tasks = Tasks.query.filter(func.date(Tasks.due_date) == datetime.today().date()).all()
+    today_tasks_done = Tasks.query.filter(Tasks.status == 3, func.date(Tasks.due_date) == datetime.today().date()).all()
     if len(today_tasks) == 0 or len(today_tasks_done) == 0:
         today_tasks_done_percentage = 0
         
@@ -35,8 +35,8 @@ def index():
     
     end_of_week = start_of_week + timedelta(days=6)
     
-    week_tasks = Task.query.filter(func.date(Task.due_date) >= start_of_week, func.date(Task.due_date) <= end_of_week).all()
-    week_tasks_done = Task.query.filter(Task.status == 3, func.date(Task.due_date) >= start_of_week, func.date(Task.due_date) <= end_of_week).all()
+    week_tasks = Tasks.query.filter(func.date(Tasks.due_date) >= start_of_week, func.date(Tasks.due_date) <= end_of_week).all()
+    week_tasks_done = Tasks.query.filter(Tasks.status == 3, func.date(Tasks.due_date) >= start_of_week, func.date(Tasks.due_date) <= end_of_week).all()
     
     if len(week_tasks) == 0 or len(week_tasks_done) == 0:
         week_tasks_done_percentage = 0
@@ -54,7 +54,7 @@ def index():
 def tasks():
     page = request.args.get('page', 1, type=int)
     per_page = 5
-    pagination = Task.query.paginate(page=page, per_page=per_page, error_out=False)
+    pagination = Tasks.query.paginate(page=page, per_page=per_page, error_out=False)
     tasks = pagination.items
     return render_template('tasks.html', tasks=tasks, pagination=pagination)
 
@@ -69,7 +69,7 @@ def create_task():
                 status = int(form.status.data)
                 due_date = form.due_date.data
 
-                task = Task(
+                task = Tasks(
                     title=title,
                     description=description,
                     status=status,
@@ -87,7 +87,7 @@ def create_task():
 
 @app.route('/edit_task/<int:task_id>', methods=['POST'])
 def edit_task(task_id):
-    task = Task.query.get_or_404(task_id)
+    task = Tasks.query.get_or_404(task_id)
     task.title = request.form['title']
     task.description = request.form['description']
     task.status = int(request.form['status'])
@@ -97,7 +97,7 @@ def edit_task(task_id):
 
 @app.route('/delete_task/<int:task_id>', methods=['POST'])
 def delete_task(task_id):
-    task = Task.query.get_or_404(task_id)
+    task = Tasks.query.get_or_404(task_id)
     db.session.delete(task)
     db.session.commit()
     return redirect(url_for('tasks'))

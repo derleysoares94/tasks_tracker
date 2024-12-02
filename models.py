@@ -6,7 +6,7 @@ from sqlalchemy import text
 
 db = SQLAlchemy()
 
-class Task(db.Model):
+class Tasks(db.Model):
     id = db.mapped_column(db.Integer, primary_key=True)
     title = db.mapped_column(db.String(80), nullable=False)
     description = db.mapped_column(db.String(120), nullable=False)
