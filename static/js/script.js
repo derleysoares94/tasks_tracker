@@ -54,6 +54,12 @@ function editTask(taskId, title, description, status, dueDate) {
             const newDescription = document.getElementById('swal-input2').value;
             const newStatus = document.getElementById('swal-input3').value;
             const newDueDate = document.getElementById('swal-input4').value;
+            // Validate the inputs are not empty.
+            if (!newTitle || !newDescription || !newStatus || !newDueDate) {
+                Swal.showValidationMessage('All fields are required');
+                return false;
+            }
+
             return { newTitle, newDescription, newStatus, newDueDate };
         }
     }).then((result) => {
