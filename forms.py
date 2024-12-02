@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SelectField, DateField
 from wtforms.validators import InputRequired, Length
 
+"""Using WTForms to create a form to add tasks and validates the fields"""
 class TaskForm(FlaskForm):
     title = StringField('Title', [InputRequired(message='The input title must be filled.'), Length(max=100)], render_kw={"placeholder": "Enter the title"})
     description = TextAreaField('Description', [InputRequired(message='The input description must be filled.'), Length(max=200)], render_kw={"placeholder": "Enter the description"})

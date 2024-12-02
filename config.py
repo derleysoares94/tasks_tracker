@@ -9,5 +9,6 @@ load_dotenv()
 # python -c 'import secrets; print(secrets.token_hex())'
 SECRET_KEY = os.getenv('SECRET_KEY', 'not-set')
 
+# Using the DATABASE_URL environment variable set on .env file or on Render env vars.
 # When deploying, set in the environment to the PostgreSQL URL
 SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')

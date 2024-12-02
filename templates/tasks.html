@@ -32,9 +32,9 @@
                         <td>{{ task.due_date.strftime("%d/%m/%Y") }}</td>
                         <td>
                             <div class="actions-btn">
-                                <button type="submit" class="btn btn-sm btn-edit" onclick="editTask({{ task.id }}, '{{ task.title }}', '{{ task.description }}', {{ task.status }}, '{{ task.due_date }}')">Edit</button>
+                                <button type="submit" class="btn btn-sm btn-edit" onclick="editTask({{ task.id }}, '{{ task.title }}', '{{ task.description }}', {{ task.status }}, '{{ task.due_date }}')" title="Edit button">Edit</button>
                                 <form action="{{ url_for('delete_task', task_id=task.id) }}" method="post" class="d-inline delete-form">
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete button">Delete</button>
                                 </form>
                             </div>
                         </td>
@@ -46,13 +46,13 @@
             <ul class="pagination justify-content-center">
                 {% if pagination.has_prev %}
                     <li class="page-item">
-                        <a class="page-link" href="{{ url_for('tasks', page=pagination.prev_num) }}" aria-label="Previous">
+                        <a class="page-link" href="{{ url_for('tasks', page=pagination.prev_num) }}" aria-label="Previous" title="Previous page button">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
-                        <a class="page-link" href="#" aria-label="Previous">
+                        <a class="page-link" href="#" aria-label="Previous" title="Previous page button">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
