@@ -38,6 +38,9 @@ function editTask(taskId, title, description, status, dueDate) {
         `,
         focusConfirm: false,
         showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Edit',
         preConfirm: () => {
             const newTitle = document.getElementById('swal-input1').value;
             const newDescription = document.getElementById('swal-input2').value;

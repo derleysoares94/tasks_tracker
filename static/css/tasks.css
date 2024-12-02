@@ -2,9 +2,18 @@
     margin-top: 20px;
 }
 
+.actions-btn {
+    display: flex;
+    flex-direction: row;
+}
+
 .btn-edit {
-    height: 31px;
-    width: 59px;
+    background-color: #007bff;
+    margin-right: 5px;
+}
+
+.btn-edit:hover {
+    background-color: #007bff;
 }
 
 /* Small devices such as large phones (640px and up) */
@@ -16,7 +25,7 @@
 /* Large devices such as laptops (1024px and up) */
 @media only screen and (min-width: 1024px) {
     .tasks_table {
-        width: 600px;
+        width: 800px;
     }
 }
 
