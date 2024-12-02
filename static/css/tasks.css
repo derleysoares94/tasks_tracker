@@ -1,14 +1,11 @@
-.task_table {
-    width: 700px;
-    border-collapse: collapse;
-    border-spacing: 0;
+.pagination {
     margin-top: 20px;
 }
 
-.task_actions {
-    display: flex;
+.btn-edit {
+    height: 31px;
+    width: 59px;
 }
-
 
 /* Small devices such as large phones (640px and up) */
 @media only screen and (min-width: 640px) {}
@@ -17,7 +14,11 @@
 @media only screen and (min-width: 768px) {}
 
 /* Large devices such as laptops (1024px and up) */
-@media only screen and (min-width: 1024px) {}
+@media only screen and (min-width: 1024px) {
+    .tasks_table {
+        width: 600px;
+    }
+}
 
 /* Largest devices such as desktops (1280px and up) */
 @media only screen and (min-width: 1280px) {}

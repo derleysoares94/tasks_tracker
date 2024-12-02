@@ -1,39 +1,38 @@
-.tasks {
-    display: flex;
-    flex-direction: row;
-}
-
 .tasks_div {
-    display: grid;
-    height: 210px;
-    width: 400px;
-    background-color: #f8f9fa;
-    padding: 15px;
-    margin-left: 50px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
-.tasks_div h4 {
-    float: left;
-    position: absolute;
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.task_inf {
-    display: grid;
-    align-items: start;
-    height: 120px;
-    width: 230px;
-    background-color: #ABB3D6;
-    margin-top: 40px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.card-header {
+    background-color: #343a40;
+    color: white;
+    border-radius: 10px 10px 0 0;
 }
 
-.tasks_div .btn{
-    width: 180px;
-    margin-left: 10px;
+.card-body {
+    padding: 20px;
 }
 
+.progress-bar {
+    background-color: #28a745;
+}
 
+/* Small devices such as large phones (640px and up) */
+@media only screen and (min-width: 640px) {}
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (min-width: 1024px) {
+    .tasks_div {
+        width: 600px;
+    }
+}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 1280px) {}

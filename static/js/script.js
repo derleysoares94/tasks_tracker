@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+/*
+Using SweetAlert library to show an edit modal form when the user clicks on edit a task.
+*/
 function editTask(taskId, title, description, status, dueDate) {
     Swal.fire({
         title: 'Edit Task',
