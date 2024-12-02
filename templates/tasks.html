@@ -3,7 +3,8 @@
 {% block main %}
 <div class="container mt-5">
     <h1 class="mb-4 text-center">List of Tasks</h1>
-    {% if tasks %}
+    <div class="task-div">
+        {% if tasks %}
         <table class="table table-striped tasks_table">
             <thead>
                 <tr>
@@ -84,10 +85,11 @@
                 {% endif %}
             </ul>
         </nav>
-    {% else %}
-        <div class="alert alert-info text-center" role="alert">
-            No task available at the moment.
-        </div>
-    {% endif %}
+        {% else %}
+            <div class="alert alert-info text-center" role="alert">
+                No task available at the moment.
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
