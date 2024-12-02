@@ -54,7 +54,7 @@ def index():
 def tasks():
     page = request.args.get('page', 1, type=int)
     per_page = 5
-    pagination = Tasks.query.paginate(page=page, per_page=per_page, error_out=False)
+    pagination = Tasks.query.order_by('due_date').paginate(page=page, per_page=per_page, error_out=False)
     tasks = pagination.items
     return render_template('tasks.html', tasks=tasks, pagination=pagination)
 

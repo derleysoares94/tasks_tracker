@@ -19,7 +19,15 @@
                     <tr>
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
-                        <td>{{ task.status }}</td>
+                        <td>
+                            {% if task.status == 1 %}
+                                To Do
+                            {% elif task.status == 2 %}
+                                Doing
+                            {% elif task.status == 3 %}
+                                Done
+                            {% endif %}
+                        </td>
                         <td>{{ task.due_date.strftime("%d/%m/%Y") }}</td>
                         <td>
                             <div class="actions-btn">

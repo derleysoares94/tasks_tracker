@@ -33,14 +33,22 @@ function editTask(taskId, title, description, status, dueDate) {
         html: `
             <input id="swal-input1" class="swal2-input" placeholder="Title" value="${title}">
             <input id="swal-input2" class="swal2-input" placeholder="Description" value="${description}">
-            <input id="swal-input3" class="swal2-input" placeholder="Status" type="number" value="${status}">
+            <select id="swal-input3" class="swal2-input" value="${status}">
+                <option value="1">To Do</option>
+                <option value="2">Doing</option>
+                <option value="3">Done</option>
+            </select>
             <input id="swal-input4" class="swal2-input" placeholder="Due Date" type="date" value="${dueDate.split(' ')[0]}">
-        `,
+        `
+        ,
         focusConfirm: false,
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Edit',
+        didOpen: () => {
+            document.getElementById('swal-input3').value = status;
+        },
         preConfirm: () => {
             const newTitle = document.getElementById('swal-input1').value;
             const newDescription = document.getElementById('swal-input2').value;
