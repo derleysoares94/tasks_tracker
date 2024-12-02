@@ -30,6 +30,7 @@ Using SweetAlert library to show an edit modal form when the user clicks on edit
 function editTask(taskId, title, description, status, dueDate) {
     Swal.fire({
         title: 'Edit Task',
+        //create the input fields with the current values of the task on the edit modal form.
         html: `
             <input id="swal-input1" class="swal2-input" placeholder="Title" value="${title}">
             <input id="swal-input2" class="swal2-input" placeholder="Description" value="${description}">
@@ -46,6 +47,7 @@ function editTask(taskId, title, description, status, dueDate) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Edit',
+        // Set the values of the select field.
         didOpen: () => {
             document.getElementById('swal-input3').value = status;
         },
@@ -94,3 +96,18 @@ function editTask(taskId, title, description, status, dueDate) {
         }
     });
 }
+
+/*
+Close the nav menu when clicking outside of it.
+*/
+document.addEventListener('click', function (event) {
+    var navbar = document.getElementById('navbarNav');
+    var navbarToggler = document.querySelector('.navbar-toggler');
+
+    if (!navbar.contains(event.target) && !navbarToggler.contains(event.target)) {
+        var bsCollapse = new bootstrap.Collapse(navbar, {
+            toggle: false
+        });
+        bsCollapse.hide();
+    }
+});
